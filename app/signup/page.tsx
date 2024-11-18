@@ -53,7 +53,7 @@ export default function SignUpPage() {
 
     try {
       setIsLoading(true);
-      let res = await createUser(user);
+      const res = await createUser(user);
       if (res.data.session) {
         localStorage.setItem('supabase.auth.token', JSON.stringify(res.data.session));
         document.cookie = `user_id=${res.data.user?.id}; path=/`;
@@ -80,7 +80,7 @@ export default function SignUpPage() {
   };
 
   const handleChange = (e: React.ChangeEvent) => {
-    let target = e.target as HTMLInputElement;
+    const target = e.target as HTMLInputElement;
     setUser((prev) => ({
       ...prev,
       [target.id]: target.value,

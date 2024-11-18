@@ -35,7 +35,7 @@ export default function BoardPage({ params }: { params: { id: string } }) {
     };
 
     loadBoard();
-  }, [boardId,fetchBoards,user_id]);
+  }, [boardId,fetchBoards,user_id,boards]);
 
   if (loading) {
     return (

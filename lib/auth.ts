@@ -88,7 +88,8 @@ export async function createUser(user: {name: string, email: string, password: s
   ): Promise<User> {
     // Update auth user if email or password changed
     if (updates.email || updates.password) {
-      const { data: _, error: authError } = await supabase.auth.updateUser({
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      const { data: _ignored, error: authError } = await supabase.auth.updateUser({
         email: updates.email,
         password: updates.password
       });

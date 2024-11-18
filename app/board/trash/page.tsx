@@ -49,7 +49,7 @@ export default function TrashPage() {
       });
       await permanentlyDeleteBoard(boardId, user_id as string);
     } catch (err) {
-      let description =
+      const description =
         err instanceof Error
           ? err.message
           : "Internal error occurred. Please try again in a minute.";
@@ -78,7 +78,8 @@ export default function TrashPage() {
   const handleRestore = async (boardId: number) => {
     try {
       const board = trashedBoards.find((b) => b.id === boardId);
-      const { deletedAt: _, ...rest } = board as Board & {deletedAt : string};
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      const { deletedAt: _ignored, ...rest } = board as Board & {deletedAt : string};
       const newBoards = [...boards, rest];
       setTrashedBoards(trashedBoards.filter((b) => b.id !== boardId));
       setBoards(newBoards);
