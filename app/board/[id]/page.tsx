@@ -35,7 +35,7 @@ export default function BoardPage({ params }: { params: { id: string } }) {
     };
 
     loadBoard();
-  }, [boardId]);
+  }, [boardId,fetchBoards,user_id]);
 
   if (loading) {
     return (
@@ -77,7 +77,7 @@ export default function BoardPage({ params }: { params: { id: string } }) {
             Board not found
           </h1>
           <p className="text-muted-foreground text-sm">
-            The board you're looking for doesn't exist or has been deleted.
+            The board you&apos;re looking for doesn&apos;t exist or has been deleted.
           </p>
         </div>
         <div className="flex gap-3 animate-in slide-in-from-bottom duration-700 delay-200">

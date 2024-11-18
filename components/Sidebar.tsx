@@ -33,7 +33,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { ChevronLeft, ChevronRight, Layout, Loader2, Plus } from "lucide-react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { CommandBar } from "./CommandBar";
 
 const Sidebar = () => {
@@ -68,7 +68,7 @@ const Sidebar = () => {
     } else {
       useBoardStore.getState().setIsLoading(false);
     }
-  }, [boards.length, fetchBoards]);
+  }, [boards.length, fetchBoards,user_id]);
 
   const handleAddBoard = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -89,7 +89,7 @@ const Sidebar = () => {
 
   const handleDelete = async (boardId: number) => {
     try {
-      let board = boards.find((b) => b.id === boardId);
+      const board = boards.find((b) => b.id === boardId);
       if (!board) return;
       
       setIsDeleting(true);
@@ -276,7 +276,7 @@ const Sidebar = () => {
       const boardToTransfer = copy.find((b) => b.id === boardId);
       copy = copy.filter((c) => c.id !== boardId);
       if (!boardToTransfer) return;
-      let moveToEnd = before === -1;
+      const moveToEnd = before === -1;
       if (moveToEnd) {
         copy.push(boardToTransfer as Board);
       } else {
@@ -337,6 +337,10 @@ const Sidebar = () => {
       </React.Fragment>
     ));
   };
+
+  const setCmdOpen = useCallback((value: boolean | ((prev: boolean) => boolean)) => {
+    setCommandOpen(value);
+  }, []);
 
   return (
     <div className="relative h-screen">
@@ -494,7 +498,7 @@ const Sidebar = () => {
         </AlertDialogContent>
       </AlertDialog>
 
-      <CommandBar open={commandOpen} setOpen={setCommandOpen} />
+      <CommandBar open={commandOpen} setOpen={setCmdOpen} />
     </div>
   );
 };

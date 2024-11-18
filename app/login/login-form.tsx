@@ -45,7 +45,7 @@ export default function LoginForm() {
 
     try {
       setIsLoading(true);
-      let res = await LoginUser(user);
+      const res = await LoginUser(user);
       if (res) {
         if (res.session) {
           localStorage.setItem('supabase.auth.token', JSON.stringify(res.session));
@@ -71,7 +71,7 @@ export default function LoginForm() {
   };
 
   const handleChange = (e: React.ChangeEvent) => {
-    let target = e.target as HTMLInputElement;
+    const target = e.target as HTMLInputElement;
     setUser((prev) => ({
       ...prev,
       [target.id]: target.value,
@@ -124,7 +124,7 @@ export default function LoginForm() {
             )}
           </Button>
           <p className="text-sm text-center text-muted-foreground">
-            Don't have an account?{" "}
+            Don&apos;t have an account?{" "}
             <Link href="/signup" className="text-primary hover:underline">
               Sign up
             </Link>

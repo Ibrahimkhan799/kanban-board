@@ -88,7 +88,7 @@ export async function createUser(user: {name: string, email: string, password: s
   ): Promise<User> {
     // Update auth user if email or password changed
     if (updates.email || updates.password) {
-      const { data: authData, error: authError } = await supabase.auth.updateUser({
+      const { data: _, error: authError } = await supabase.auth.updateUser({
         email: updates.email,
         password: updates.password
       });

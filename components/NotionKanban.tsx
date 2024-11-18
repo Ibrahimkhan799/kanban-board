@@ -65,9 +65,10 @@ const NotionKanban = ({ board }: NotionKanbanProps) => {
         description: "All changes have been saved successfully.",
       });
     } catch (error) {
+      console.error("Failed to save board:", error);
       toast({
         title: "Error saving board",
-        description: "Failed to save changes. Please try again.",
+        description: `Failed to save changes. Please try again.`,
         variant: "destructive",
       });
     } finally {
@@ -78,7 +79,7 @@ const NotionKanban = ({ board }: NotionKanbanProps) => {
   const handleDelete = async () => {
     setIsDeleting(true);
     try {
-      let boardToDelete = trashedBoards.find((b) => b.id === board.id);
+      const boardToDelete = trashedBoards.find((b) => b.id === board.id);
       await removeBoard(boardToDelete as Board, board.user_id);
       router.push("/board");
       toast({
@@ -86,6 +87,7 @@ const NotionKanban = ({ board }: NotionKanbanProps) => {
         description: "The board has been moved to the trash.",
       });
     } catch (error) {
+      console.error("Failed to delete board:", error);
       toast({
         title: "Error deleting board",
         description: "Failed to move board to trash. Please try again.",
@@ -253,7 +255,7 @@ const Column: React.FC<ColumnProps> = ({
     [MouseEvent | TouchEvent | PointerEvent, Card],
     void
   > = (e, card) => {
-    // @ts-ignore
+    // @ts-expect-error - dataTransfer is not recognized on generic Event type but is available during drag operations
     e.dataTransfer.setData("cardId", card.id.toString());
   };
 
@@ -306,7 +308,7 @@ const Column: React.FC<ColumnProps> = ({
     return Array.from(document.querySelectorAll(`[data-column="${column}"]`));
   };
 
-  const handleDragLeave: React.DragEventHandler<HTMLDivElement> = (e) => {
+  const handleDragLeave: React.DragEventHandler<HTMLDivElement> = () => {
     setActive(false);
     clearHighlights();
   };
@@ -401,7 +403,7 @@ const Button = ({
   ...props
 }: ButtonProps) => {
   return (
-    // @ts-expect-error
+    // @ts-expect-error - motion.button type conflicts with HTMLButtonElement attributes but works as expected
     <motion.button
       className={cn(
         "px-3 py-1.5 w-fit rounded text-xs text-primary-foreground transition-colors bg-primary hover:bg-primary/90",

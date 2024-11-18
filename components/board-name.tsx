@@ -34,7 +34,7 @@ export function BoardName({
   isCollapsed,
 }: BoardNameProps) {
   const [name, setName] = useState(initialName);
-  const [text,setText] = useState(name);
+  const [text, setText] = useState(name);
   const [isOpen, setIsOpen] = useState(false);
   const { user_id } = useBoardStore();
   const [isLoading, setIsLoading] = useState(false);
@@ -43,14 +43,15 @@ export function BoardName({
   const pathname = usePathname();
   const router = useRouter();
   const setBoardToDelete = useBoardStore((state) => state.setBoardToDelete);
+
   // Update local state when board name changes in store
   useEffect(() => {
     const board = boards.find((b) => b.id === boardId);
-    if (board && name !== initialName && !isOpen) {
-      setName(name);
-      setText(name);
+    if (board && board.name !== name && !isOpen) {
+      setName(board.name);
+      setText(board.name);
     }
-  }, [boards, boardId, initialName, isOpen]);
+  }, [boards, boardId, isOpen, name]);
 
   const handleBoardClick = (id: number) => {
     router.push(`/board/${id}`);

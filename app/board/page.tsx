@@ -12,7 +12,7 @@ export default function BoardsPage() {
 
   useEffect(() => {
     syncState(user_id as string);
-  }, []);
+  }, [syncState, user_id]);
 
   if (isLoading) return <LoadingBoards length={6} />;
 

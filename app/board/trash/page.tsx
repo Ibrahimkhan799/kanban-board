@@ -77,9 +77,9 @@ export default function TrashPage() {
 
   const handleRestore = async (boardId: number) => {
     try {
-      let board = trashedBoards.find((b) => b.id === boardId);
-      let {deletedAt, ...rest} = board as Board & {deletedAt : string};
-      let newBoards = [...boards,rest];
+      const board = trashedBoards.find((b) => b.id === boardId);
+      const { deletedAt: _, ...rest } = board as Board & {deletedAt : string};
+      const newBoards = [...boards, rest];
       setTrashedBoards(trashedBoards.filter((b) => b.id !== boardId));
       setBoards(newBoards);
       await restoreFromTrash(boardId, user_id as string);
@@ -88,7 +88,7 @@ export default function TrashPage() {
         description: "Board has been restored",
       });
     } catch (err) {
-      let description =
+      const description =
         err instanceof Error
           ? err.message
           : "Internal error occurred. Please try again in a minute.";
@@ -106,7 +106,7 @@ export default function TrashPage() {
         description: "Trash has been emptied",
       });
     } catch (err) {
-      let description =
+      const description =
         err instanceof Error
           ? err.message
           : "Internal error occurred. Please try again in a minute.";
@@ -163,7 +163,21 @@ export default function TrashPage() {
   );
 }
 
-const TrashCard = memo(function ({board, handleRestore, handlePermanentDelete, isPermanentlyDeleting, boardToDelete, setBoardToDelete}: {board: Board & {deletedAt: string}, handleRestore: (boardId: number) => void, handlePermanentDelete: (boardId: number) => void, isPermanentlyDeleting: boolean, boardToDelete: number | null, setBoardToDelete: (boardId: number | null) => void}) {
+const TrashCard = memo(function TrashCard({
+  board, 
+  handleRestore, 
+  handlePermanentDelete, 
+  isPermanentlyDeleting, 
+  boardToDelete, 
+  setBoardToDelete
+}: {
+  board: Board & {deletedAt: string}, 
+  handleRestore: (boardId: number) => void, 
+  handlePermanentDelete: (boardId: number) => void, 
+  isPermanentlyDeleting: boolean, 
+  boardToDelete: number | null, 
+  setBoardToDelete: (boardId: number | null) => void
+}) {
   return (
     <Card key={board.id} className="group">
               <CardHeader>
@@ -204,8 +218,7 @@ const TrashCard = memo(function ({board, handleRestore, handlePermanentDelete, i
                     <DialogHeader>
                       <DialogTitle>Permanently Delete Board</DialogTitle>
                       <DialogDescription>
-                        Are you sure you want to permanently delete "
-                        {board.name}"? This action cannot be undone.
+                        Are you sure you want to permanently delete &quot;{board.name}&quot;? This action cannot be undone.
                       </DialogDescription>
                     </DialogHeader>
                     <DialogFooter className="flex gap-2 mt-4">

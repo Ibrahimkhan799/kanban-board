@@ -100,12 +100,12 @@ export default function SettingsPage() {
       setTimeout(() => {
         router.push("/login");
       }, 300);
-    } catch (error) {
+    } catch (err) {
       setIsDeleting(false);
       toast({
         variant: "destructive",
         title: "Error",
-        description: "Failed to delete user",
+        description: `Failed to delete user: ${err instanceof Error ? err.message : "Unknown error"}`,
       });
     }
   };

@@ -26,7 +26,7 @@ export default function RecentPage() {
           .slice(0, 6);
         setRecents(recentBoards);
       } catch (err) {
-        let description =
+        const description =
           err instanceof Error
             ? err.message
             : "Internal error occurred. Please try again in a minute.";

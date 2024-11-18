@@ -65,7 +65,7 @@ export interface BoardAsyncActions {
 export type BoardStore = BoardState & BoardActions & BoardAsyncActions;
 
 // Utility types
-export type Function<TArgs extends any[], TReturn = void,R = Record<string,any>> = (...args: TArgs) => TReturn;
+export type Function<TArgs extends unknown[], TReturn = void> = (...args: TArgs) => TReturn;
 
 export type User = {
     id :string;

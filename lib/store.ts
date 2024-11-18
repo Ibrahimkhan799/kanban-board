@@ -87,7 +87,7 @@ export const useBoardStore = create<BoardStore>()(
       removeBoard: async (board, user_id) => {
         try {
           if (!board) return;
-          let trashedBoard = {...board,deletedAt : new Date().toISOString()};
+          const trashedBoard = {...board,deletedAt : new Date().toISOString()};
           
           // Then update the backend
           
