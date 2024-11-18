@@ -170,6 +170,9 @@ export default function AnalyticsPage() {
                     </div>
                   </div>
                 ))}
+                {boards.length === 0 && (
+                  <p className="text-sm text-muted-foreground">No boards found.</p>
+                )}
               </div>
             </CardContent>
           </Card>
