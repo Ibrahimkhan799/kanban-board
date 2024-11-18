@@ -20,7 +20,7 @@ import SettingsLoading from "./loading";
 import { useRouter } from "next/navigation";
 import { deleteUser, getUser } from "@/lib/auth";
 import { ThemeColorRadio } from "@/components/theme-color-radio";
-import { useAuth } from "@/lib/hooks/useAuth";
+import { useAuth } from "@/hooks/useAuth";
 
 export default function SettingsPage() {
   useAuth();

@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import supabase from '../supabase';
-import { useBoardStore } from '../store';
+import supabase from '@/lib/supabase';
+import { useBoardStore } from '@/lib/store';
 
 export function useAuth() {
   const router = useRouter();
