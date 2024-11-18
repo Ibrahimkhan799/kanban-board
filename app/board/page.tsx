@@ -3,7 +3,7 @@ import { BoardCard } from "@/components/BoardCard";
 import { useBoardStore } from "@/lib/store";
 import { useEffect } from "react";
 import LoadingBoards from "./loading-boards";
-import { useAuth } from "@/lib/hooks/useAuth";
+import { useAuth } from "@/hooks/useAuth";
 import { motion } from "framer-motion";
 
 export default function BoardsPage() {

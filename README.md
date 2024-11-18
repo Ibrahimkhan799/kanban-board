@@ -10,7 +10,7 @@ A powerful, Notion-inspired Kanban board application built with modern web techn
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
 
-[Demo](https://demo-link.com) • [Documentation](docs/README.md) • [Report Bug](issues) • [Request Feature](issues)
+[Demo](https://demo-link.com) • [Documentation](README.md) • [Report Bug](https://github.com/Ibrahimkhan799/kanban-board/issues) • [Request Feature](https://github.com/Ibrahimkhan799/kanban-board/issues)
 
 </div>
 
@@ -55,7 +55,7 @@ A powerful, Notion-inspired Kanban board application built with modern web techn
 
 1. **Clone the repository**
 ```bash
-git clone https://github.com/yourusername/notion-kanban.git
+git clone https://github.com/Ibrahimkhan799/notion-kanban.git
 cd notion-kanban
 ```
 
@@ -163,5 +163,5 @@ Licensed under the MIT License. See [LICENSE](LICENSE) for details.
 ---
 
 <div align="center">
-Made with ❤️ by Ibrahim Khan(https://github.com/Ibrahimkhan799)
+Made with ❤️ by Ibrahim Khan (https://github.com/Ibrahimkhan799)
 </div>
