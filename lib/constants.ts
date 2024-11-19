@@ -97,7 +97,7 @@ export const LANDING_PAGE = {
       }
     ],
     footer: {
-      copyright: "© 2024 Notion Kanban. All rights reserved.",
+      copyright: "© 2024 Notion Kanban. All rights reserved. Made by Ibrahim Khan",
       links: [
         {
           text: "Terms",
